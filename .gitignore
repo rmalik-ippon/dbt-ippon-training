@@ -6,3 +6,5 @@ venv/
 .sqlfluff
 .sqlfluffignore
 generator/
+.venv/
+.env

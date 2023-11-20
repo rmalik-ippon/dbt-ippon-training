@@ -1,0 +1,25 @@
+version: 1
+
+models:
+  - name: restaurants__turnover_ordered
+    description: Turnover for each restaurant, ordered by amount descending
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('expect_restaurants__turnover_ordered')
+
+    columns:
+      - name: restaurant_identifier
+        description: Unique identifier of the restaurant
+
+      - name: name
+        description: Name of the restaurant
+        tests:
+          - unique
+
+      - name: address
+        description: Address of the restaurant
+
+      - name: turnover
+        description: Sum of all payments made to the restaurant
+        tests:
+          - warn_if_negative

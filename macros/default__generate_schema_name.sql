@@ -5,17 +5,13 @@
 
         {{ default_schema }}
 
-    {%- else -%}
+    {%- else if target.name.lower() == 'prod' -%}
 
-        {%- if target.name == 'prod' -%}
+        {{ custom_schema_name | trim }}
 
-            {{ custom_schema_name | trim }}
+    {%- else %}
 
-        {%- else %}
-
-            {{ default_schema }}_{{ custom_schema_name | trim }}
-
-        {%- endif -%}
+        {{ default_schema }}_{{ custom_schema_name | trim }}
 
     {%- endif -%}
 

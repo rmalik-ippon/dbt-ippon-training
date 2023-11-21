@@ -5,7 +5,7 @@
 
         {{ default_schema }}
 
-    {%- else if target.name.lower() == 'prod' -%}
+    {%- elif target.name.lower() == 'prod' -%}
 
         {{ custom_schema_name | trim }}
 

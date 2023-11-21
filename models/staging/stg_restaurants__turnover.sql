@@ -2,8 +2,7 @@ select
     base_orders.restaurant_identifier,
     base_restaurants.name,
     base_restaurants.address,
-    sum(base_orders.amount) as turnover,
-    base_orders.created_at
+    sum(base_orders.amount) as turnover
 from
     {{ ref("base_orders") }} as "base_orders"
 left join
@@ -13,5 +12,4 @@ on
 group by
     base_orders.restaurant_identifier,
     base_restaurants.name,
-    base_restaurants.address,
-    base_orders.created_at
+    base_restaurants.address

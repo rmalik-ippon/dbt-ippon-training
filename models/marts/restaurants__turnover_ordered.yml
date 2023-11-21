@@ -6,6 +6,7 @@ models:
     tests:
       - dbt_utils.equality:
           compare_model: ref('expect_restaurants__turnover_ordered')
+          tags: ['unit_testing']
 
     columns:
       - name: restaurant_identifier

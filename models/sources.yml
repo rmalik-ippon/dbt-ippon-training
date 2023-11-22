@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: source
+    description: Source schema description
+    schema: source
+    
+    tables:
+      - name: restaurants
+        description: Contains all restaurants information
+      - name: orders
+        description: Contains all records of payments for all restaurants
+
+        columns:
+          - name: identifier
+            description: Unique identifier of the payment
+            tests:
+              - unique:
+                  config:
+                    severity: warn
+              - not_null
+
+          - name: restaurant_identifier
+            description: Unique identifier of the restaurant the payment was due to
+
+          - name: payment_method
+            description: Method used for the payment
+
+          - name: amount
+            description: Amount of the payment
+
+          - name: created_at
+            description: Date and time of the payment
+
+      - name: fuzzy_orders
+        description: Fuzzy orders table description
+
+      - name: dishes
+        description: Dishes table description
